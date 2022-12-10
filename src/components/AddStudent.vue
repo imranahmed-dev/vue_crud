@@ -1,6 +1,3 @@
-<script setup>
-
-</script>
 
 <template>
     <section class="py-4">
@@ -14,11 +11,11 @@
                 <div class="col">
                     <div class="card">
                         <div class="card-body">
-                            <form>
+                            <form @submit.prevent="dataStore()">
                                 <div class="mb-3">
-                                    <input class="form-control" type="text" placeholder="Enter name">
+                                    <input class="form-control" v-model="studentForm.name" type="text" placeholder="Enter name">
                                 </div>
-                                <button class="btn btn-success btn-sm">Save</button>
+                                <button class="btn btn-success btn-sm" type="submit">Save</button>
                             </form>
                         </div>
                     </div>
@@ -28,3 +25,14 @@
     </section>
 </template>
 
+<script setup>
+import { reactive } from 'vue';
+import { studentStore } from '../store/students';
+const studentForm = reactive({
+  name: '',
+});
+const studentStores = studentStore();
+const dataStore = () => {
+    studentStores.store(studentForm);
+}
+</script>

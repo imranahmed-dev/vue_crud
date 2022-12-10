@@ -1,7 +1,7 @@
 import HomePage from "./components/HomePage.vue";
 import AddStudent from "./components/AddStudent.vue";
 
-export default [
+const routes = [
   {
     path: "/",
     name: "home",
@@ -13,3 +13,5 @@ export default [
     component: AddStudent,
   },
 ];
+
+export default routes;
