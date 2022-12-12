@@ -1,5 +1,6 @@
 import HomePage from "./components/HomePage.vue";
 import AddStudent from "./components/AddStudent.vue";
+import EditStudent from './components/EditStudent.vue'
 
 const routes = [
   {
@@ -11,6 +12,11 @@ const routes = [
     path: "/student/create",
     name: "studentCreate",
     component: AddStudent,
+  },
+  {
+    path: "/student/edit/:id",
+    name: "studentEdit",
+    component: EditStudent,
   },
 ];
 

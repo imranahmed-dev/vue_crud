@@ -18,10 +18,10 @@
               </tr>
             </thead>
             <tbody>
-              <tr v-for="student in studentStores.students" :key="student">
+              <tr v-for="student in studentStore.students" :key="student">
                 <td>{{ student.name }}</td>
                 <td>
-                  <router-link class="btn btn-info btn-sm me-1" to=""
+                  <router-link class="btn btn-info btn-sm me-1" :to="{ name: 'studentEdit', params: { id: student.id } }"
                     >Edit</router-link
                   >
                   <v-btn
@@ -40,20 +40,23 @@
 </template>
 
 <script setup>
-import { studentStore } from "../store/students";
-import { onMounted, computed } from "vue";
-const studentStores = studentStore();
+import { useStudentStore } from "../store/students";
+import { onMounted } from "vue";
+const studentStore = useStudentStore();
 
 
 
 const deleteStudent = (id) => {
   if (confirm("Are you sure ?")) {
-    studentStores.deleteData(id);
+    studentStore.delete(id, () => {
+      studentStore.get();
+    });
+    
   }
 };
 
 onMounted(() => {
-  studentStores.getData();
+  studentStore.get();
 });
 
 </script>
