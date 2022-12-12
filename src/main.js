@@ -8,7 +8,7 @@ import VueSweetalert2 from 'vue-sweetalert2';
 const pinia = createPinia()
 
 const router = createRouter({
-    history: createWebHistory(),
+  history: createWebHistory(),
   routes,
 });
 

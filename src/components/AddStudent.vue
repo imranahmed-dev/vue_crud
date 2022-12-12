@@ -22,7 +22,26 @@
                 </div>
             </div>
         </div>
-    </section>
+      <div class="row">
+        <div class="col">
+          <div class="card">
+            <div class="card-body">
+              <form @submit.prevent="store">
+                <div class="mb-3">
+                  <input
+                    v-model="name"
+                    class="form-control"
+                    type="text"
+                    placeholder="Enter name"
+                  />
+                </div>
+                <button class="btn btn-success btn-sm">Save</button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+  </section>
 </template>
 
 <script setup>
