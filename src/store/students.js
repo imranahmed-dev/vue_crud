@@ -9,6 +9,10 @@ export const useStudentStore = defineStore("student", {
     students: [],
     student: [],
     errors: [],
+    pagination:{
+      current_page: 1,
+      last_page: 0,
+    }
   }),
 
   actions: {
@@ -24,9 +28,11 @@ export const useStudentStore = defineStore("student", {
       }
     },
     async get() {
-      const res = await axios.get("/students");
+      const res = await axios.get("/students?page="+this.pagination.current_page);
       if (res.data.success) {
-        this.students = res.data.students;
+        this.students = res.data.students.data;
+        this.pagination.current_page = res.data.students.current_page;
+        this.pagination.last_page = res.data.students.last_page;
       }
     },
 

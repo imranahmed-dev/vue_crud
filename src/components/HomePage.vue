@@ -33,6 +33,7 @@
               </tr>
             </tbody>
           </table>
+          <Pagination v-if="studentStore.pagination.last_page > 1" :pagination="studentStore.pagination" :offset="3" @paginate="studentStore.get()"></Pagination>
         </div>
       </div>
     </div>
@@ -42,8 +43,8 @@
 <script setup>
 import { useStudentStore } from "../store/students";
 import { onMounted } from "vue";
+import Pagination from "./Pagination.vue";
 const studentStore = useStudentStore();
-
 
 
 const deleteStudent = (id) => {
